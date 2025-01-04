@@ -1,5 +1,6 @@
 # DATA shuffling
-# JupyterLAb (ipynb)
+
+# JupyterLAb (ipynb) 
 
 # Adult Shuffle
 import numpy as np
@@ -69,9 +70,6 @@ Clusters = encoder.transform(Clusters)
 Clusters = to_categorical(Clusters)
 dump(encoder, 'Encoder.joblib')
 print("Clusters encoded and encoder saved")
-
-
-
 
 # Normalize the data
 meanData = data.mean(axis=0)
