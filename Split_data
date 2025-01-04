@@ -1,0 +1,46 @@
+# Splitting Data 
+
+import math
+import tensorflow as tf
+from tensorflow.keras.utils import plot_model
+from tensorflow.keras.models import load_model
+from tensorflow.keras import backend as K
+from tensorflow.keras import regularizers
+from tensorflow.keras import Input
+from tensorflow.keras import layers
+from tensorflow.keras.models import Model
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from tensorflow.keras.utils import to_categorical
+import glob
+from sklearn.utils.class_weight import compute_class_weight
+from joblib import dump
+import os
+
+
+# Assuming P24, P48, and Adult datasets are loaded as numpy arrays
+# Define the directory path where your data is located
+directory_path = '/n/sci/SCI-004375-NYUDATA/Filippo/Multiome'
+os.chdir(directory_path)
+print("Current working directory:", os.getcwd())
+
+# Loading in shuffled datasets with full file paths
+Adult = np.load(os.path.join(directory_path, "AdultData_Shuffled.npy"))
+ClustersAdult = np.load(os.path.join(directory_path, "AdultIDs_Shuffled.npy"))
+
+P24 = np.load(os.path.join(directory_path, "P24Data_Shuffled.npy"))
+ClustersP24 = np.load(os.path.join(directory_path, "P24IDs_Shuffled.npy"))
+
+P48 = np.load(os.path.join(directory_path, "P48Data_Shuffled.npy"))
+ClustersP48 = np.load(os.path.join(directory_path, "P48IDs_Shuffled.npy"))
+
+# Calculate 90% split point for each dataset
+split_P24 = int(len(P24) * 0.9)
+split_P48 = int(len(P48) * 0.9)
+split_Adult = int(len(Adult) * 0.9)
+
+# Print the split points
+print("90% split point for P24:", split_P24)
+print("90% split point for P48:", split_P48)
+print("90% split point for Adult:", split_Adult)
