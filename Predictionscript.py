@@ -19,11 +19,9 @@ encoder_path = load('Encoder_multinet.joblib')
 
 #Load average expression values of the training set, for the stage closest to the target dataset
     mean = np.load("meanAdult.npy")
-    #mean = np.load("meanP70.npy)
-    #mean = np.load("meanP50.npy)
-    #mean = np.load("meanP40.npy)
-    #mean = np.load("meanP30.npy)
-    #mean = np.load("meanP15.npy)
+    #mean = np.load("meanP48.npy)
+    #mean = np.load("meanP24.npy)
+
 
 # Import target dataset (see Readme.txt for requirements). These lines are required if you are importing the RDS file. Use the function "pyreadr.read_r" to read the file.
 dataset_path = 'Example.rds'  # You can change this.
