@@ -25,6 +25,7 @@ For P40, P50 and P70 stage P48 was used
 For late larval stages (after P70) use Adult stage 
 
 4) Preparation of the input
+   
 The classification script (Predict.py) requires a log-normalized expression matrix,
 subsetted for the marker genes provided. If your data is in Seurat format, you can use the
 included "PrepareInput.R" script to do this. Just uncomment the marker load line for the correct stage.
