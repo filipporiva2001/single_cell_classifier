@@ -27,7 +27,9 @@ encoder_path = load('Encoder_multinet.joblib')
 dataset_path = 'Example.rds'  # You can change this.
 result = pyreadr.read_r(dataset_path)
 Target = result[None]  # Extract the dataframe
-Target = Adult.T
+Target = Target.T
+# Mean-center
+Target -= mean
 
 # You can alternatively center with the mean of your own dataset. This could provide additional domain adaptation but should only be used if your dataset originates from whole optic lobes, i.e. not a subset achieved by FACS etc.
 # meanTarget = Target.mean(axis=0)
@@ -52,43 +54,43 @@ def predict_with_confidence(model, x, no_classes, n_iter=500):
 
 
 # If you are classifying a large dataset on a machine with limited memory, use the alternative below instead
-def predict_with_confidence(model, x, no_classes, n_iter=100):
-    prediction = model.predict(x)
-    softmax = np.amax(prediction, axis=1)
-    classes = np.argmax(prediction, axis=1)
+# def predict_with_confidence(model, x, no_classes, n_iter=100):
+#     prediction = model.predict(x)
+#     softmax = np.amax(prediction, axis=1)
+#     classes = np.argmax(prediction, axis=1)
 
-    @tf.function
-    def f(x):
-        return model(x, training=True)
+#     # @tf.function
+#     # def f(x):
+#     #     return model(x, training=True)
 
-    bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
-    for i in range(n_iter):
-        bootstrap[i, :, :] = f(x).numpy()
-    BSmax1 = np.argmax(bootstrap, axis=2)
+#     bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
+#     for i in range(n_iter):
+#         bootstrap[i, :, :] = f(x).numpy()
+#     BSmax1 = np.argmax(bootstrap, axis=2)
 
-    bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
-    for i in range(n_iter):
-        bootstrap[i, :, :] = f(x).numpy()
-    BSmax2 = np.argmax(bootstrap, axis=2)
+#     bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
+#     for i in range(n_iter):
+#         bootstrap[i, :, :] = f(x).numpy()
+#     BSmax2 = np.argmax(bootstrap, axis=2)
 
-    bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
-    for i in range(n_iter):
-        bootstrap[i, :, :] = f(x).numpy()
-    BSmax3 = np.argmax(bootstrap, axis=2)
+#     bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
+#     for i in range(n_iter):
+#         bootstrap[i, :, :] = f(x).numpy()
+#     BSmax3 = np.argmax(bootstrap, axis=2)
 
-    bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
-    for i in range(n_iter):
-        bootstrap[i, :, :] = f(x).numpy()
-    BSmax4 = np.argmax(bootstrap, axis=2)
+#     bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
+#     for i in range(n_iter):
+#         bootstrap[i, :, :] = f(x).numpy()
+#     BSmax4 = np.argmax(bootstrap, axis=2)
 
-    bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
-    for i in range(n_iter):
-        bootstrap[i, :, :] = f(x).numpy()
-    BSmax5 = np.argmax(bootstrap, axis=2)
+#     bootstrap = np.zeros((n_iter, x.shape[0], no_classes))
+#     for i in range(n_iter):
+#         bootstrap[i, :, :] = f(x).numpy()
+#     BSmax5 = np.argmax(bootstrap, axis=2)
 
-    BSmax = np.concatenate((BSmax1, BSmax2, BSmax3, BSmax4, BSmax5), axis=0)
-    confidence = np.sum(BSmax == classes, axis=0) / BSmax.shape[0]
-    return classes, softmax, confidence
+#     BSmax = np.concatenate((BSmax1, BSmax2, BSmax3, BSmax4, BSmax5), axis=0)
+#     confidence = np.sum(BSmax == classes, axis=0) / BSmax.shape[0]
+#     return classes, softmax, confidence
 
 # Predict and save
 prediction, softmax, confidence = predict_with_confidence(model, Target, 259)
