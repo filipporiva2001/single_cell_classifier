@@ -7,7 +7,10 @@ All required files, as well as an example input dataset are provided with the ap
 2) Gene Names 
 
 We provide lists of marker genes to be used as input features for different stages as .rds files.
-
+We use the gene symbols from BDGP6.88 build. If your genes names are from a different build, or if 
+you use FBgn numbers instead, you can convert the marker gene lists using the "ConversionTable.rds"
+we also provide. The first column, "reference_symbol" is what we use, the last two columns correspond to, up-to-date, FBgn numbers or symbols. However, these are not guaranteed to match 
+your datasets either
 
 3) Stage
 
