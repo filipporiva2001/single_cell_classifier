@@ -17,8 +17,11 @@ your datasets either
 You can classify optic lobe cells sequenced from any stage, but you need to use the correct set of 
 markers as input features and uncomment the correct stage of model and means lines in the Predict.py file
 We recommend using the stage closest to your target dataset. 
+
 For P15 and P30 sequencing stage P24 was used 
+
 For P40, P50 and P70 stage P48 was used 
+
 For late larval stages (after P70) use Adult stage 
 
 4) Preparation of the input
@@ -29,7 +32,7 @@ Make sure the gene names in the marker list and your dataset match. Do NOT modif
 the marker genes. If your cells are missing any of the genes, you need to create that row in your 
 dataset and pad it with zeros BEFORE subsetting with the provided files
 
-5)Classification 
+5) Classification 
 
 Uncomment the lines loading the "model" and "mean" for the correct stage in the Predictionscript.py file.
 This script is designed to load a matrix saved in .rds format as exampled in PrepareInput.R. However,
