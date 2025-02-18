@@ -7,11 +7,8 @@ Adult.male <- NormalizeData(Adult.male, normalization.method = "LogNormalize", s
 
 # Load the set of markers for the stage closest to the target dataset.
 markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNAdult.rds")
-# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP70.rds")
-# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP50.rds")
-# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP40.rds")
-# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP30.rds")
-# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP15.rds")
+# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP48.rds")
+# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP24.rds")
 
 # Convert the marker names to match your dataset first!
 
