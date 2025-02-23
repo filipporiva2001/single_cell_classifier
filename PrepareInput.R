@@ -6,9 +6,9 @@ library(Seurat)
 Adult.male <- NormalizeData(Adult.male, normalization.method = "LogNormalize", scale.factor = 10000)
 
 # Load the set of markers for the stage closest to the target dataset.
-markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNAdult.rds")
-# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP48.rds")
-# markers <- readRDS("C:/YourDirectory/AppendixNN/MarkersNNP24.rds")
+markers <- readRDS("C:/YourDirectory/AppendixNN/Adult_RNA-NNmarkers.rds")
+# markers <- readRDS("C:/YourDirectory/AppendixNN/P48_RNA-NNmarkers.rds")
+# markers <- readRDS("C:/YourDirectory/AppendixNN/P24_RNA-NNmarkers.rds")
 
 # Convert the marker names to match your dataset first!
 
