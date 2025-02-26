@@ -41,7 +41,7 @@ you can load your input dataset in any way you like (if you're not loading an R 
 pyreadr package), as long as the format matches the example dataset provided. Make sure it's log-normalized
 in the same way and the columns (input features) are in the exact same order as in the provided marker
 files provided.
-The script will then classify your data, determine confidence scores and save them in .txt files. The .txt file will contain two columns, in the first one labelled "Clusetr" you will have the number of cluster you are predicting and in the second column named "Confidence" you will have the confidence score with which the cluster has been predicted.
+The script will then classify your data, determine confidence scores and save them in .txt files. The .txt file will contain two columns, in the first one labelled "Cluster" you will have the number of cluster you are predicting and in the second column named "Confidence" you will have the confidence score with which the cluster has been predicted.
 The rows will not be labeled but order will match the order of cells you provided. Please refer to 
 Table S1 for correspondances of the predicted cluster numbers to cell types.
 
